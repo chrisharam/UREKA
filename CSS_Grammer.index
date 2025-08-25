@@ -7,14 +7,25 @@
 
 <style>  안에서 정의 !  </style>
 안에서는,
-    선택자       { 서술(효과); 서술(효과) }
+    선택자1,선택자2       { 서술(효과); 서술(효과) }
     selector    description
 으로 CSS를 구현.
+
+특정 선택자에만 적용하기
+1. 세부 특성 지정
+header h1{
+    border: 1px; solid red;
+}
+2. id 활용
+'#'을 사용하기
+--> body에서 id를 할당하고, head에서 #id{} 안에 적용하기.
 
 구현할 수 있는 서술효과들
 - color:
 - font-size: 
-- 
-- 
-- 
-- 
+- text-text-decoration: underline;
+- border: 색깔 픽셀 글꼴(solid dotted)
+- padding(border의 안)): 픽셀
+- margin(border의 밖): 픽셀
+- height(글꼴의 크기): 픽셀
+- width(글꼴의 크기): 픽셀
