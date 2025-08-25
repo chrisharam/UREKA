@@ -29,3 +29,10 @@ header h1{
 - margin(border의 밖): 픽셀
 - height(글꼴의 크기): 픽셀
 - width(글꼴의 크기): 픽셀
+
+이미지 url 활용하기
+<img src="url을 입력하기">
+--> float(두 개의 컨텐츠가 나란히 배치하기) : left
+
+Chrome을 기준으로, 웹 UI를 보며 수정하기
+--> 우클릭 - 요소보기 - 수정

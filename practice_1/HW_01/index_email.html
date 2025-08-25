@@ -3,11 +3,39 @@
     <head>
         <meta charset="UTF-8">
         <title>자기소개 페이지</title>
+        <style>
+            img{
+                float: left;
+                width: 300px;
+                height: 70px;
+                margin-right: 40px;
+                margin-bottom: 30px;
+            }
+            nav{
+                clear: both;
+            }
+            li{
+                font-size: 30px;
+                margin: 30px;
+            }
+            #name{
+                color: black;
+                text-decoration: underline;
+                font-size: 40px;
+            }
+            #answer {
+                font-size: 20px;
+                border: 1px black solid;
+                margin: 10px;
+                padding: 10px;
+                display: inline-block;
+            }
+        </style>
     </head>
     <body>
         <header>
-            <h1>
-                <a href="http://127.0.0.1:5500/practice_1/HW_01/index.html"> Go back to main page</a>
+            <h1><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/LG_U%2B_CI.svg/1280px-LG_U%2B_CI.svg.png">
+                <a id ="name" href="http://127.0.0.1:5500/practice_1/HW_01/index.html">LG U+ 유레카 교육생 정하람</a>
             </h1>    
         </header>
         <nav>
@@ -19,7 +47,8 @@
             </ol>
         </nav>
         <article>
-            <h2>이메일 주소는 haram001021@gmail.com 입니다.</h2>    
+            <h3>답변: </h3>   
+            <p id="answer">이메일 주소는 haram001021@gmail.com 입니다. </p> 
         </article>
     </body>
 </html>
