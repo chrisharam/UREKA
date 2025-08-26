@@ -69,6 +69,11 @@
 <details>- 사용자가 필요에 따라 열고 닫을 수 있는 추가 세부 정보를 정의합니다.
 <summary><details>- 요소 에 대한 제목을 정의합니다.
 
+
+-반응형(디바이스 별 레이아웃 설정)
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+header에 설정하기!
+
 -url 보기
 개발자 도구 - 네트워크 - 상태
 : 200(정상/새 데이터 내려줌)
@@ -79,9 +84,30 @@
 <html lang="ko"> 으로 기술하는 것은 검색, 즉 google처럼 서칭머신을 위함
 --> 보안에 취약할 수 있음. 언어 설정을 하지 않아도 무방하게 작동함.
 
+url = ip:port/survelt/memberinsert? id = a & pw = b
+              구조 기술  정보 노출
+-보안 로그인
+form태그 사용 --> form 안에 들어간 값들이 CGI로 이동함.
+<form action="loginController" method="post"> 
+// 포스트 방식을 사용해야, 적어도 url에는 안 보임-->그래도 개발자 모드-payload에서는 보임.
+// url에 이미 로그인하겠다는(survelet에 가겠다는) 구조가 보임 = 최악.
+
+    <div>
+        ID <input name="id" type="text">    
+    </div>
+    <div>
+        PW <input name="pw" type="text">
+    </div>
+        <input type="submit" value="Login">
+    </form>
+
+php파일 사용
+
+
 -Semantic 하게 작성하는 html
 --> 결국 검색 엔진에 도움을 주기 위함.
 
 << 보안 전문가로서의 프론트엔드 전문가 >>
 코더는 결국 나중에 AI로 많이 대체될 텐데, 나는 어떤 경쟁력을 갖출 것인가?
 --> 보안 전문가! 프론트 엔드에서 선제적인 조치를 취할 수 있는 프레임워크 & url을 통한 보안성 강화
+--> 예쁘게 하는 것은 디자이너, 나는 '프론트엔드 디벨로퍼'
