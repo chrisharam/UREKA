@@ -81,66 +81,100 @@
 ------------------------------------------------------------------------
 
 4. 박스 모델
-    - width, height, margin, padding, border 
-    - margin 단축, auto 중앙정렬, margin collapse
-    - box-sizing : border-box
-    - max-width
-    - div 박스 구조: content -> padding -> border -> margin
+
+    - width, height
+        - 부모의 높이가 px로 정해져 있어야, 자식에서 % 사용 가능
+
+    - padding, border, margin
+        - padding // 내용과 경계선 사이
+            - 표기 순서 = 시계 방향
+        - border // 요소 테두리
+            - 표기 순서 = width style color;
+        - margin // 이웃 요소와의 간격
+            - margin : auto // 가로 중앙 정렬
+
+    - box-sizing
+        - content-box(width + height) + border-box(padding + border + margin)
+        - max-width = 요소의 넓이 제한 & 반응성에서 조절 가능
+        --> div 박스 구조: content -> padding -> border -> margin
+    - margin-collapse
+        - 두 블록 이상의 마진이 맞닿을 때 --> z-index로 우선순위 정하기
     - outline, outline-offset
+        - outline = 요소 밖에 그려지는 외곽선 // 박스모델에 해당 x
+        - outline-offset = outline을 border 바깥으로 띄우는 간격
 
 ------------------------------------------------------------------------
 
 5. 배경
-    - background-color, background-image, background-repeat, background-attachment
+
+    - background-color, background-image, background-repeat
+    -  background-attachment = 스크롤에 따라 움직이는 지를 고려
+        - scroll = 배경이 요소와 같이 스크롤
+        - fixed = 스크롤해도 배경이 그대로
+        - local = 배경이, 요소의 스크롤 컨텐츠와 함께 스크롤 됨
 
 ------------------------------------------------------------------------
 
 6. 경계선(border)
+
     - border-style, border-width, border: style width color
     - border 없애기 : border-collapse: collapse;
 
 ------------------------------------------------------------------------
 
-7. 배치 & 레이아웃
+7. 배치 & 레이아웃 & 이펙트
+
     - display
-        - none
-        - inline
-        - block          
-        - inline-block
+        - none --> dropdown에서 활용 // 숨김
+        - inline // 인라인으로 취급 --> width, height가 안 먹힘
+        - block // 블록(한 줄 다 차지)    
+        - inline-block  // 블록 & 한 줄에 여러 개의 블록 존재 가능
         - flex
         - grid
+    - dropdown  
+        - dropdown = 목차 카테고리
+        - dropdown-content = 내려오는 내용들 // display : none으로 설정
     - position
-        - static
-        - relative
-        - fixed
-        - absolute
-        - z-index
+        - static    // 위치 고정 & 화면 변형--> 모양 변형
+        - relative  // 화면 줄여도 모양 변형
+        - fixed // 위치 고정 & 화면 변형 --> 짤림 (절대위치)
+        - absolute // body를 기준으로 배치 & 다른 요소가 그 자리 차지 가능(배경가능)
+            - z-index   // 우선순위 할당
     - overflow
-        - visible
-        - hidden
-        - scroll
-        - auto
+        - visible(default)
+        - hidden // 넘친 부분 제거
+        - scroll    // 자동 추가
+        - auto  // 필요한 경우에만 scroll 추가
     - float
+        - 떠다니디 // 병렬 배치
+        - right, left, none, inherit
     - clear
+        - 해당 자리에 온 것을 무시 --> 그 다음 줄에 배치됨
+        - left, right
     - clearfix
+        - 밖으로 넘친 부분 조작
+        - ::after{} // 넘친 부분을 조작 // 해당 형식은 container에 배치되어야 함.
+        - ::before{} // 어떤 요소 앞에 조작
 
 ------------------------------------------------------------------------
 
 8. 가상 클래스 & 가상 요소
+
     - 가상 클래스
-        - :hover
-        - :active
-        - :visited
+        - :hover    // 마우스 인식
+        - :active   // 클릭하는 순간의 이펙트
+        - :visited 
         - :link
-    - 가상 요소 
-        - ::before
-        - ::after
-        - ::selection
-        - ::marker
+    - 가상 요소 = content의 앞에 가상요소 삽입 = content가 반드시 있어야 함
+        - @::before
+        - @::after
+        - @::selection  // 사용자가 텍스트를 드레그하여 선택했을 때
+        - @::marker // 형광펜
 
 ------------------------------------------------------------------------
 
 9. 링크 & 효과
+
     - a 태그 기본 밑줄 제거  
         - a {text-decoration : none;}
     - a 상태별 스타일
@@ -148,29 +182,73 @@
         - a: visited
         - a: hover
         - a: active
-    - 드롭다운 메뉴 
-        - 
-        - 
-        - 
-        - 
-        - 
 
 ------------------------------------------------------------------------
 
+10. FlexBox = 유연한 레이아웃
 
-10. FlexBox
-    - 개념
-        -flex-direction: row, column, reverse
-        -flex-wrap: nowrap, wrap
-        -justify-content: center, flex-start, flex-end, space-around, space-between, space-evenly
-        -align-items: center, flex-start, flex-end, stretch, baseline
-        -align-content
-    - 반응성 
-        - 
-        - 
-        - 
-        - 
-        - 
-        - 
+    - 구성
+        -Flex container(부모 요소)
+            --> display : flex;
+            --> display : inline-flex; 로 선언해야 유연하게 정렬 가능
+
+        -Flext item(자식 요소)
+            - 컨테이너 안에 들어가는 각 요소
+        -->예시
+        <div class="flex-container">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>  
+        </div>
+
+    - Flex container 주요 속성
+        -flex-direction = 플렉스 아이템의 주축 방향 설정
+            - row(default) // 왼 -> 오
+            - column // 위 -> 아래
+            - reverse
+
+        -flex-wrap = 아이템이 컨테이너를 넘어갈 때(초과) 줄 바꿈 여부 // 적응형
+            : nowrap(default) // 박스가 작아짐
+            : wrap(다음줄로 이동)   // 줄 바꿈
+            : wrap-reverse // 줄바꿈 & 아래에서 위로 쌓임
+        -justify-content = 주축(수직 수평) 방향으로 아이템 간 공간 배치(주측 기준 = 수평)
+            : center(중앙)
+            : flex-start(default // 왼쪽)
+            : flex-end(오른쪽)
+            : space-around(아이템 양쪽 공백 동일 & 끝 여백 절반)
+            : space-between(아이템 사이 공간 동일 & 양끝 여백 X)
+            : space-evenly(모든 간격 균일)
+
+        -align-items = 교차축(수직) 방향으로 아이템 정렬 // 수직의 모든 높이를 사용하지 않을 때!!
+            : center(중앙)
+            : flex-start(상단)
+            : flex-end(하단)
+            : stretch(수직을 모두 채움)
+            : baseline(수평 기준선을 기준으로 정렬)
+
+        -align-content = 여러 줄(flex-wrap 사용 시) 아이템 그룹 간 공간 배치
+            - flex-start → 위쪽 정렬
+            - flex-end → 아래쪽 정렬
+            - center → 중앙 정렬
+            - space-between, space-around, space-evenly → 줄 간격 균등 배치
+            - stretch (기본) → 컨테이너 높이에 맞춰 늘림
+
+    - Flex Item 주요 속성
+        - flex-grow: 남는 공간을 얼마나 확장할지 비율 지정 (0 기본)
+        - flex-shrink: 공간 부족 시 얼마나 축소할지 지정 (1 기본)
+        - flex-basis: 초기 아이템 크기 지정 (auto 기본)
+        - flex: flex-grow flex-shrink flex-basis 단축 속성
+        - align-self: 해당 아이템만 교차축 기준 정렬 (컨테이너 align-items 무시 가능)
+    
+    - 반응형 Flexbox(기기별 디스플레이 크기 고려)
+        - 미디어 쿼리를 사용하여, 화면 크기에 따라 레이아웃 변경
+        - flex-direction을 픽셀에 따라 변경 + 디스플레이 설정
+        --> 예시
+        @media (max-width: 800px) {
+            .column {
+                flex: 50%;
+                max-width: 50%;
+            }
+        }
 
 --------------------------------EOF--------------------------------------
