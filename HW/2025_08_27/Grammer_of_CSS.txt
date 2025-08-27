@@ -1,0 +1,176 @@
+-----------------------------Grammer of CSS-----------------------------
+0. html 속의 CSS
+
+    --> head 부분에서, 태그를 언급하며 CSS를 구현함.
+    --> head는 html의 속성값을 정의하는 부분!
+    --> body에서 정의된 태그를 언급해야함.
+
+    --> <style>  안에서 정의 !  </style>
+        ex)    선택자1,선택자2       { 서술(효과); 서술(효과) }
+                selector        description   
+
+------------------------------------------------------------------------
+
+1. 개념 & 적용 방법
+
+    - 디자인에 집중하는 언어
+    - 3가지 방법으로 CSS를 html에 추가
+        (1) 인라인 style
+        (2) 내부 <style>
+        (3) 외부 <link>
+    - <head>에서 CSS 정의 --> <body> 태그를 대상에 적용
+    - <style> 선택자 { 속성 : 값} </style>
+
+------------------------------------------------------------------------
+
+2. 선택자(selectors)
+
+    - 특정 사용자에게만 적용하기
+        (1) 세부 특성 지정 header h1 {...}
+            - 상단~하단의 형식을 호출하며, 하위 특성의 css도 조작 가능
+        (2) id: #idName {...}
+            - body에서 id를 할당 & head에서 #id {} 안에 속성 정의하기
+        (3) class : .className {...}
+            - 무관한 다른 특성들도 하나로 묶어서 css 적용가능
+            - head에서,  "  .클래스이름{ }  " 으로 활용됨
+        (4) 전체 선택자: * {...}
+    - 속성 선택자
+        - [target]
+        - [target=""]
+        - [target^=""]
+        - [target $=""]
+        - [target ~=""]
+    -결합자(상속)
+        - 특정 형식 아래에 있는 모든 형식을 관리
+        - 활용
+            - 부모 자식 : p c {} // p 안의 모든 c 요소들에 적용
+            - 자식 선택자 : p > c {} // p의 직계자식인 c만 포함 & 손자는 미포함
+            - 형제 선택자 : s + s {} // 특정 s 바로 뒤에 나오는 s까지만 적용
+                       : div ~s {} // 특정 div 뒤의 모든 형제 s까지 적용
+
+------------------------------------------------------------------------
+
+3. 텍스트 & 글꼴
+
+    -속성
+        - color: 색상 
+        - font-size: 픽셀 // 글꼴 크기가
+        - font-family: 글꼴 // 항상 대체 글꼴을 추가해야함
+        - font-style: 기울림체 
+        - font-weight: 픽셀 // 두께
+        - text-align: 위치 // 정렬 위치 
+            - justify = 모든 줄의 너비를 맞춤(신문)
+            - center, left, right
+        - text-decoration: 밑줄
+            - none, underline, line-through, overline
+        - vw:  // 창의 크기에 따라 비율 반영 --> 크기 조정
+    - html 태그 효과
+        - <b></b> // 굵게
+        - <strong></strong> // 검색엔진 강조
+        - <i></i> // 기울림체
+        - <em></em> // 텍스트 의미 강조
+        - <mark></mark> // 형광펜
+        - <small></small>
+        - <del></del>   // 취소선
+        - <ins></ins>   // 새로 추가됨
+        - <sub></sub>   // 아래첨자
+        - <sup></sup>   // 위첨자
+        - <blockquote></blockquote> // 인용문
+        - <q></q>   //짧은 인라인 인용문(""가 같이 따라옴)
+
+------------------------------------------------------------------------
+
+4. 박스 모델
+    - width, height, margin, padding, border 
+    - margin 단축, auto 중앙정렬, margin collapse
+    - box-sizing : border-box
+    - max-width
+    - div 박스 구조: content -> padding -> border -> margin
+    - outline, outline-offset
+
+------------------------------------------------------------------------
+
+5. 배경
+    - background-color, background-image, background-repeat, background-attachment
+
+------------------------------------------------------------------------
+
+6. 경계선(border)
+    - border-style, border-width, border: style width color
+    - border 없애기 : border-collapse: collapse;
+
+------------------------------------------------------------------------
+
+7. 배치 & 레이아웃
+    - display
+        - none
+        - inline
+        - block          
+        - inline-block
+        - flex
+        - grid
+    - position
+        - static
+        - relative
+        - fixed
+        - absolute
+        - z-index
+    - overflow
+        - visible
+        - hidden
+        - scroll
+        - auto
+    - float
+    - clear
+    - clearfix
+
+------------------------------------------------------------------------
+
+8. 가상 클래스 & 가상 요소
+    - 가상 클래스
+        - :hover
+        - :active
+        - :visited
+        - :link
+    - 가상 요소 
+        - ::before
+        - ::after
+        - ::selection
+        - ::marker
+
+------------------------------------------------------------------------
+
+9. 링크 & 효과
+    - a 태그 기본 밑줄 제거  
+        - a {text-decoration : none;}
+    - a 상태별 스타일
+        - a: link
+        - a: visited
+        - a: hover
+        - a: active
+    - 드롭다운 메뉴 
+        - 
+        - 
+        - 
+        - 
+        - 
+
+------------------------------------------------------------------------
+
+
+10. FlexBox
+    - 개념
+        -flex-direction: row, column, reverse
+        -flex-wrap: nowrap, wrap
+        -justify-content: center, flex-start, flex-end, space-around, space-between, space-evenly
+        -align-items: center, flex-start, flex-end, stretch, baseline
+        -align-content
+    - 반응성 
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
+
+--------------------------------EOF--------------------------------------
