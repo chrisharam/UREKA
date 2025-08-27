@@ -69,6 +69,10 @@
 <details>- 사용자가 필요에 따라 열고 닫을 수 있는 추가 세부 정보를 정의합니다.
 <summary><details>- 요소 에 대한 제목을 정의합니다.
 
+-이미지 url 활용하기
+<img src="url을 입력하기">
+--> float(두 개의 컨텐츠가 나란히 배치하기) : left
+--> alt="텍스트" (이미지가 없을 때의 대체 텍스트)
 
 -반응형(디바이스 별 레이아웃 설정)
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -103,6 +107,8 @@ form태그 사용 --> form 안에 들어간 값들이 CGI로 이동함.
 
 php파일 사용
 
+Chrome을 기준으로, 웹 UI를 보며 수정하기
+--> 우클릭 - 요소보기 - 수정
 
 -Semantic 하게 작성하는 html
 --> 결국 검색 엔진에 도움을 주기 위함.

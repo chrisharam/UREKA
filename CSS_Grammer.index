@@ -17,6 +17,7 @@ CSS는 3가지 방법으로 HTML 문서에 추가할 수 있습니다.
     selector    description
 으로 CSS를 구현.
 
+
 특정 선택자에만 적용하기
 1. 세부 특성 지정
 header h1{
@@ -25,6 +26,11 @@ header h1{
 2. id 활용
 '#'을 사용하기
 --> body에서 id를 할당하고, head에서 #id{} 안에 적용하기.
+3. class 활용
+--> 포괄적으로 다른 특성들도 묶어서 적용가능
+--> head에서, '.클래스이름 {  }'으로 활용됨
+3. 모든 특성에 적용
+--> *
 
 구현할 수 있는 서술효과들
 - color:
@@ -51,11 +57,104 @@ header h1{
 <blockquote cite="url입력"> 인용문을 입력 </blockquote> // 안의 인용문은 들여쓰기됨.
 <q> </q> : 짧은 인용문
 
+- 배경화면
+background-color
+background-image
+background-repeat : no-repeat or repeat-x or repeat-y
+background-attachment : 배경 이미지를 스크롤해야 하는지(scroll) 아닌지(fixed)
 
-이미지 url 활용하기
-<img src="url을 입력하기">
---> float(두 개의 컨텐츠가 나란히 배치하기) : left
---> alt="텍스트" (이미지가 없을 때의 대체 텍스트)
+background { 약어 사용 시, 순서}
+(1)background-color
+(2)background-image
+(3)background-position
+(4)background-size
+(5)background-repeat
+(6)background-origin
+(7)background-clip
+(8)background-attachment
 
-Chrome을 기준으로, 웹 UI를 보며 수정하기
---> 우클릭 - 요소보기 - 수정
+-텍스트 
+tex-align: justify;
+ = 모든 줄의 너비를 맞춤(신문처럼)
+글꼴
+-family는 항상 대체 글꼴도 추가해야 함.
+p {
+  font-family: Tahoma, Verdana, sans-serif;
+}
+-font-style : 기울기
+-font-weight : 두께
+-font-size : 크기(px or vw)
+vw = 창의 크기에 따라 비율 반영하여 크기를 조정
+
+
+-경게선 border
+border-style : 경계선 모양
+border-width : 경계선 폭 (상하 좌우 or 상 우 하 좌)
+border 약어 : style width color
+border 없애기 : border-collapse : collapse;
+
+-여백 margin
+margin 약어 : 위 좌우 아래 or 위아래 양사이드
+margin: auto(중앙 정렬)
+margin: inherit( 그 위에 적용된 속성의 margin값을 이어받음)
+margin collapse(margin사이가 너무 멀면, 브라우저에서 무시함)
+
+-box-sizing = border와 padding으로 인해 달라지는 박스의 크기를 설정
+기존 컨텐츠의 크기 = width
+전체 박스의 크기 = margin + width
+박스 사이징 = border-boxing(패딩 크기와 상관없이 width가 박스의 크기가 되도록)
+
+-max-width : 최대 허용 너비를 설정 & 페이지가 작아질 때, 동적으로 박스모양을 보이도록 설정!
+
+-보이는 모양(형식적 구조 설정) --> 레이아웃 형성 가능
+display
+    : none // 표시 x
+    : inline // 
+    : block // 한 줄을 다 차지
+    : inline-block // 각 content가 속한 부분만 한정하여, 한 줄로 통합
+    : flex
+    : grid
+
+-위치
+    position
+        : static(default) // 위치 고정이지만, 화면 줄이면 모양 변형 <-- top left 등 무시
+        : relative (화면 줄여도 모양 변형)
+        : fixed // 위치 고정 & 화면 줄이면 짤림 = 화면을 기준으로 배치됨.
+        : absolute // body를 기준으로 배치됨 = 문서의 일반 흐름에서 빠져버려서, 다른 요소들이 그 자리를 차지함(배경 가능)
+        --> absolute는 위치 지정x = 문서기준 & 위치 지정o = 상단의 형식 기준
+    z-index
+        = 겹쳐지는 위치에서 어느 것이 위로 올 것인가?
+        : z-index: 숫자가 클수록 위에 위치(마이너스 가능)
+    overflow
+        = 영역에 맞지 않을 만큼 큰 콘텐츠를 처리
+        : visible(default)
+        : hidden(넘친 부분 잘림)
+        : scroll(자동 추가)
+        : auto(필요한 경우 scroll 추가)
+    float
+        = 떠다니다(병렬 배치 // 아이템들끼리 유연하게 배치)
+        : right
+        : left
+        : none
+        : inherit
+
+div박스 기준으로!
+(1) content 범위: width * height
+(2) border 범위: border 두께
+(3) padding 범위: 좌우상하
+--> 박스의 전체 가로: width + left padding + right padding + left border + right border
+--> 박스의 전체 세로: height + top padding + bottom padding + top border + bottom border
+
+outline = 다른 콘텐츠와 곂칠 수도 있는, 박스모델에 포함되지 않는 그냥 선
+outline-offset : px; 얼만큼 border로부터 떨어져있어야 할지
+
+-링크
+a태그는 항상 밑줄이 그어짐 --> 지우려면
+a {
+  text-decoration: none;
+}
+이펙트
+a:link{}- 방문하지 않은 일반 링크
+a:visited{}- 사용자가 방문한 링크
+a:hover{}- 사용자가 마우스를 올려놓으면 링크가 표시됩니다.
+a:active{}- 클릭하는 순간의 링크
