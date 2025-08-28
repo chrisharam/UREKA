@@ -290,3 +290,109 @@ nav button {
 .accordion input[type="radio"]:checked + label::after{
     transform: rotate(-135deg);
 }
+.newsletter > p{
+  margin-top: 30px;
+  font-size: 15px;
+}
+.newsletter > p::before{
+  content: "\203b\0020";
+  color: white;
+  font-weight: bold;
+}
+#submit{
+  margin: 5px;
+  border-radius: 20%;
+  padding: 10px;
+}
+.site-footer{
+  background-color: #333232;
+  color: #ecf0f1;
+  padding: 40px 10%;
+  border-top: 5px solid #2c3e50;
+  line-height: 1.6;
+}
+.footer-content{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+}
+.footer-content .col{
+  flex: 1;
+  min-width: 200px;
+}
+.footer-content h2,
+.footer-content h3{
+  margin-top: 0;
+  font-size: 1.2em;
+  color: white;
+  border-bottom: 2px solid #ecf0f1;
+  padding-bottom: 5px;
+  display: inline-block;
+}
+.footer-content p,
+.footer-content ul li{
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 10px;
+}
+.footer-content ul{
+  list-style: none;
+  padding: 0;
+}
+.footer-content a{
+  text-decoration: none;
+  color: #ccc;
+}
+.footer-content a:hover{
+  color: #fff;
+}
+.socials{
+  display: flex;
+  gap: 20px;
+  margin-top: 15px;
+}
+.socials i{
+  font-size: 28px;
+}
+.socials a:hover i{
+  color: #C13584;
+}
+.socials li:nth-child(2) a:hover i{
+  color:#1877f2;
+}
+.socials li:nth-child(3) a:hover i{
+  color: #e50914;
+}
+
+.copyright{
+  text-align: center;
+  border-top: 1px solid #333;
+  padding-top: 20px;
+  margin-top: 40px;
+  color: #777;
+  font-size: 12px;
+}
+
+@media (max-width: 768px){
+  .site-footer{
+    padding: 40px 5%;
+  }
+  .footer-content{
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-content col{
+    text-align: center;
+    font-size: 30px;
+  }
+  .footer-content h2,
+  .footer-content h3{
+    border-bottom: none;
+  }
+  .socials{
+    justify-content: center;
+  }
+}
