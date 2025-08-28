@@ -1,0 +1,74 @@
+// ==========================
+// 변수 선언
+// ==========================
+// var : 함수 스코프, 중복 선언 가능 (권장 x // 구버전)
+// let : 블록 스코프, 재할당 가능
+// const : 블록 스코프, 재할당 불가 (상수)
+var oldVar = "I am var";  // 유연하지만 예측하기 어려움
+let age = 20;             // 변경 가능
+const name = "Alice";     // 변경 불가능
+
+console.log(oldVar, age, name);
+
+
+// ==========================
+// 함수 (Functions)
+// ==========================
+
+// (1) 함수 선언식
+function greet(user) {
+  return "Hello, " + user;
+}
+console.log(greet("Bob"));
+
+// (2) 함수 표현식 (변수에 담기)
+const square = function (x) {
+  return x * x;
+};
+console.log(square(4));
+
+// (3) 화살표 함수 (간단하게)
+const add = (a, b) => a + b;
+console.log(add(2, 3));
+
+
+// ==========================
+// 객체 (Objects)
+// ==========================
+let person = {
+  name: "Charlie",
+  age: 25,
+  greet: function() {
+    console.log("Hi, I'm " + this.name);
+  }
+};
+
+console.log(person.name);  // 속성 접근
+person.greet();            // 메서드 실행
+
+
+// ==========================
+// JavaScript 독특한 출력 메커니즘
+// ==========================
+
+// 1. console.log는 "표현식 평가 결과"를 출력
+let x = 10;
+console.log(x);     // 10
+console.log(x + 5); // 15
+
+// 2. 문자열과 함께 출력할 경우 자동 형변환 (type coercion)
+console.log("Age: " + age);  // "Age: 20"
+console.log("Sum: " + (2 + 3)); // "Sum: 5"
+
+// 3. 객체를 출력할 때는 참조를 보여줌
+let obj = {a:1, b:2};
+console.log(obj);   // { a: 1, b: 2 }
+
+// 4. console.log는 여러 개를 동시에 출력 가능
+console.log("Multiple values:", name, age, obj);
+
+// 5. alert (브라우저 전용) - 단순 팝업창
+// alert("Hello World!");
+
+// 6. document.write (브라우저 전용) - HTML에 직접 출력
+// document.write("This text is on the page!");
