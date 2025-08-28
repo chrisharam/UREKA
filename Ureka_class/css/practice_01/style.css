@@ -1,0 +1,292 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* width에 padding + border */
+}
+
+body {
+  background-color: #111;
+  color: #fff;
+}
+
+section {
+  padding: 40px 10%;
+}
+
+section h2 {
+  margin-bottom: 20px;
+  font-size: 36px;
+}
+
+section h3 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+header {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(images/header-bg.jpg) center no-repeat;
+  background-size: cover;
+  padding: 10px 8%;
+  position: relative;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+nav .logo {
+  font-size: 32px;
+  color: #db0001;
+  cursor: pointer;
+}
+
+nav button {
+  background-color: #db0001;
+  color: #fff;
+  padding: 10px 24px;
+  margin-left: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 0;
+  border-radius: 5px;
+}
+
+.lang {
+  display: inline-flex; /* block + inline */
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid #fff;
+}
+
+.lang i:nth-child(1) {
+  margin-right: 8px;
+}
+
+.lang i:nth-child(2) {
+  margin-left: 8px;
+}
+
+.header-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); /* 화면의 가운데 위치 */
+  text-align: center;
+}
+
+.header-content h2 {
+  font-size: 60px;
+  margin-bottom: 40px;
+}
+
+.header-content h3 {
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+
+.add-email {
+  background-color: #fff;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+}
+
+.add-email input {
+  border: 0;
+  flex: 1; /* 플렉스 컨테이너 안의 아이템들이 남는 공간을 균등하게 채우도록 하는 방법 */
+  margin-left: 20px;
+}
+
+.add-email button {
+  border: 0;
+  font-size: 16px;
+  padding: 15px 30px;
+  background-color: #db0001;
+  color: #fff;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  nav .logo {
+    font-size: 20px;    
+  }
+  nav button{
+    padding:5px 10px;
+  }
+  .lang{
+    padding: 4px 8px;
+  }
+  .header-content{
+    position: unset;
+    transform: none;
+    padding-top: 150px;
+  }
+
+  .header-content h2{
+    font-size: 48px;
+  }
+
+  .header-content h3{
+    font-size: 20px;
+  }
+
+  .add-email button{
+    font-size: 12px;
+    padding: 10px 15px;
+  }
+}
+
+
+.banner-content{
+    background: linear-gradient(to right, #651c3d, #280a2b 60%);
+    padding: 40px;
+    border-radius: 6px;
+    margin-bottom: 40px;
+}
+
+#banner p{
+    font-size: 20px;
+    color:rgba(255,255,255,0.7);
+    margin-bottom: 30px;
+}
+
+#banner button{
+    border: 0;
+    border-radius: 5px;
+    padding: 10px 20px;
+    background-color: rgba(128,128,128,0.4);
+    color:#fff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.select-menu{
+    padding: 10px 24px;
+    font-size: 16px;
+    background-color: transparent;
+    color: #fff;
+    border:1px solid #fff;
+    margin-top: 20px;
+}
+
+.select-menu option{
+    background-color: #2b2b2b;
+}
+
+.membership-content{
+    background:  linear-gradient(to right, rgba(101,28,61,0.9), rgba(40,10,43,0.5) 60%) , 
+     url(images/membership-bg.png) no-repeat  right;
+    padding: 60px 40px;
+    border-radius: 6px;
+    margin-bottom: 40px;
+}
+
+.membership-content p{
+    font-size: 20px;
+    color:rgba(255,255,255,0.7);
+    margin-bottom: 30px;
+}
+
+#choice p{
+    font-size: 22px;
+    color:rgba(255,255,255,0.7);
+    margin-bottom: 30px;
+}
+
+.choice-content{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:30px;
+}
+
+.card{
+    flex:1;
+    position: relative;
+    height:300px;
+    padding: 40px;
+    background: linear-gradient(to bottom, rgba(25,32,68,1), rgba(32,19,34,1) 62%);
+    border-radius: 10px;
+}
+
+.bean-img{
+    width: 80px;
+    position: absolute;
+    bottom :20px;
+    right:10px;
+}
+
+.bean-img img{
+    width: 100%;
+    height: auto;
+}
+
+@media screen  and (max-width:768px){
+    .card{
+       flex-basis: 100%; 
+    }
+}
+
+@media screen  and (min-width:769px) and (max-width:1220px){
+    .card{
+       flex-basis: calc(50% - 15px); 
+    }
+}
+
+#Faq .accordion{
+    width: 100%;
+    max-width: 750px;
+    margin: 60px auto;
+}
+
+.accordion li{
+    list-style: none;
+    padding : 5px;
+}
+
+.accordion li label{
+    font-size: 25px;
+    font-weight: 500;
+    background-color: #303030;
+    margin-bottom: 2px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.accordion li label::after{
+    position: absolute;
+    content: '\2b'; /*유니코드 문자 */
+    right: 20px;
+    font-size: 40px;
+}
+
+.accordion .content{
+    background-color: #3b3b3b;
+    font-size: 22px;
+    line-height: 1.6;
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.accordion input[type="radio"]:checked + label + .content{
+    max-height: 600px;
+}
+
+.accordion input[type="radio"]{
+    display: none;
+}
+
+.accordion input[type="radio"]:checked + label::after{
+    transform: rotate(-135deg);
+}
