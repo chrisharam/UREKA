@@ -1,0 +1,66 @@
+<!-- 그림판 만들기 -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 웹 그림판 </title>
+    <style>
+        canvas{
+            border: 1px solid black;
+            
+        }    
+    </style>
+ </head>
+ <body>
+    <canvas id ="my_canvas" width="500" height="500">
+
+    </canvas>
+
+    <!-- javaScript 부분 -->
+    <script>
+        const canvas = document.getElementById("my_canvas");
+        const ctx = canvas.getContext("2d");
+
+        // 이벤트를 사용하는 법
+        // 1. 이벤트 소스에 이벤트 리스너를 달아두기
+        // 2. 이벤트 handler를 구현 (이벤트가 실행하려는 코드)
+        
+        let isDrawing = false;  //마우스로 현재 그릴 것인지 아닌지
+        
+        function draw(event){
+            if(isDrawing){
+                // 어디서부터 어디까지 그릴 것인지, 두 개의 argument가 필요
+                ctx.lineTo(event.offsetX, event.offsetY);
+                // 스트로크로 그리겠다는 의미
+                ctx.stroke();
+            }
+        }
+
+        function startDraw(event){
+            isDrawing = true;
+            // 경로를 옮겨간 마우스 위치로 이동하면서, 그리기를 시작
+            ctx.beginPath();
+            ctx.moveTo(event.offsetX, event.offsetY);
+        }
+        
+        function stopDraw(){
+            isDrawing = false;
+            ctx.closePath();
+        }
+        // 1. 이벤트 소스
+        // 그리는 리스너
+        canvas.addEventListener("mousemove", draw);
+                            // 마우스 움직일 때, 그린다
+                            // draw()라고 쓰면 바로 호출되어서 안 됨.
+        //마우스가 눌릴 때에만 그리겠다는 리스너
+        canvas.addEventListener("mousedown",startDraw);
+                            // 마우스 누를 때, 그린다
+        canvas.addEventListener("mouseup",stopDraw);
+                            // 마우스 뗄 때, 그리지 않음
+
+        console.log(ctx);
+    </script>
+
+ </body>
+ </html>

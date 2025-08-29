@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function a(){
+            console.log("ok");
+        }
+    
+    // 함수로 호출
+        // 함수만 호출 & p1에 리턴 값 없음
+        let p1 =  a(); // 반환값 없음
+        console.log(p1);
+
+    // 생성자로 호출
+        // 함수 호출 & p1에 리턴값(메모리 자리) 할당 = value 있는 상태
+        let p2 = new a();    // 객체 자리 할당
+        console.log(p2);    // p2엔 객체 자리 할당
+
+        console.log('----------------------------');
+
+        var v1 = new Object();
+        console.log(window.v1);
+        console.log(v1.__proto == v1.prototype); // true
+        // v1 객체의 주솟값 과 v1의 prototype 주소를 비교 if 같은 객체인지.
+    </script>
+</body> 
+</html>

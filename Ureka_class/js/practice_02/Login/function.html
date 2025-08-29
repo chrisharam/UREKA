@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head>
+    <!-- 외부 css 파일 사용 = link 걸어두기 -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <h1>회원가입</h1>    
+        <form action="cgi" method="get">
+            <!-- 필수 항목 = required -->
+            <label for="name">이름 : </label> 
+            <input type="text" id="name" name="name" required> 
+
+            <label for="email">이메일 : </label> 
+            <input type="email" id="email" name="email" required> 
+
+            <label for="password">비밀번호 : </label> 
+            <input type="password" id="password" name="pw" required> 
+
+            <input type="submit" value="가입하기">
+        </form>
+        <!-- 서버에 전송하려면, form 태그 안에 넣어야 함! -->    
+    </div>
+</body>
+</html>

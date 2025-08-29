@@ -1,0 +1,121 @@
+-----------------------------------------------------------------------------------------
+                                Variable
+-----------------------------------------------------------------------------------------
+1. false로 인식하는 것들
+    number = 0 & string = "" or "null" & number/"string"
+    true로는 number=100일 때도 true라고 판단.
+
+2. 변수 타입
+    1)let
+        블록 스코프 // {} 안에서만 작동
+
+    2)var = 범위 모호 // block 과 상관없이 사용됨 = block을 넘나들며 사용됨.
+        function 안에서 선언 = 함수 스코프 = local 취급함.
+        function 밖에서 선언 = 전역 변수
+
+
+    3)const   = java에서의 final(primitive = 재할당x)
+            = 객체/배열은 수정은 가능
+        --> 참조값 고정 
+
+        (1) Primitive (원시 타입)
+            JS const: 재할당 불가능
+            Java final primitive: 재할당 불가능
+
+        (2) 객체 / 배열 (Reference Type)
+            JS const: 참조 자체는 고정 → 다른 객체를 가리킬 수 없음
+                        하지만 내부 값은 변경 가능
+            Java final reference: 참조 자체는 고정 → 다른 객체를 가리킬 수 없음
+                                    하지만 내부 값은 변경 가능
+        (예시)
+            const x = 10;
+            x = 20; // ❌ TypeError: Assignment to constant variable
+
+            const arr = [1, 2];
+            arr.push(3); // ✅ 가능 (배열 내부 변경)
+            console.log(arr); // [1, 2, 3]
+3. Scope
+    1) global scope
+        
+    2) function scope
+        : 블록과 구별됨.
+    3) block scope
+
+-----------------------------------------------------------------------------------------
+                                Object
+-----------------------------------------------------------------------------------------
+2. function 객체 VS Object 객체
+    let x = Boolean(true)   <-- function 객체
+    let y = new Boolean(false) <-- object 객체
+
+    function 객체
+        function 객체 = Function 생성자의 인스턴스 → 객체인데 실행(call) 가능
+        따라서 함수는 일반 객체처럼 속성 가짐 = 호출 가능(callable)
+        JS에는 원시값(boolean)과 이를 감싸는 래퍼 객체(wrapper object) (Boolean)가 따로 있습니다.
+
+    (1)공통점 
+        둘 다 사실상 Function 객체
+        둘 다 new 키워드를 붙이면 인스턴스를 만들 수 있음
+        프로토타입 기반으로 동작함
+
+    (2)차이점
+    function 객체:
+        일반 함수처럼 호출 가능 + 생성자로도 사용 가능
+        prototype 메서드는 수동 추가
+    class 객체:
+        함수와 본질적으로 같지만, 생성자 전용 문법
+        new 없이 호출 불가
+        prototype 메서드 자동 정의
+        strict mode 강제
+
+
+3. 객체 선언 & 생성
+    (1) var p1 = {name: "p1"}; <-- 객체 리터럴 이용
+    (2) var p2 = new Object(); p2.name="abc" <-- 생성자
+    (3) function Person(name){   <-- 사용자 지정 생성자 이용
+            this.name = name;
+        }
+        var p3 = new Person("abc");
+        var p4 = new Person("def");
+
+
+4. Primitive type  VS  Reference type
+<script>
+        /* primitive type */
+        let name = "정하람";
+        let age = 26;
+        let height = 180;
+        let isPerson = true;
+        let price;
+        let property = null;
+        console.log(name,age,height,isPerson,price,property);
+
+        /* reference type */
+        let person={
+            name : "정하람",
+            age : 26,
+            height : 180,
+            isPerson : true,
+            price,
+            property : null
+        }
+        console.log(person);
+
+        /* const reference type */
+        const a_person={
+            name : "정하람",
+            age : 26,
+            height : 180,
+            isPerson : true,
+            price,
+            property : null
+        }
+        a_person.name="홍길동";
+        console.log(a_person);
+
+    </script>
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------

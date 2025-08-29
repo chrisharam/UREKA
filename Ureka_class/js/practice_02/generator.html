@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script>
+        function Person(name){
+        this.name=name;
+        }
+        var p1=new Person("bbb");
+        console.log(p1.name); //bbb
+    </script> -->
+    
+    <!-- <script>
+        function Person(name){
+            this.name=name; //이때의 this는 window
+            }
+        var p1=Person("bbb"); //리턴 값이 없으므로
+        console.log(p1); //undefined
+        console.log(p1.name); //TypeError
+        console.log(window.name); // bbb
+    </script> -->
+
+    <!-- new를 사용 = person과 연결 -->
+    <!-- new를 사용x = window와 연결 -->
+
+    <!-- <script>
+        function Person(){
+        this.eyes=2;
+        this.nose=1;
+        }
+        var p1=new Person();
+        var p2=new Person();
+        console.log(p1.eyes+":"+p1.nose); // 2:1
+        console.log("<br>");
+        console.log(p2.eyes+":"+p2.nose); // 2:1
+    </script> -->
+    <!-- java의 static(공유영역) & 상속의 개념을, js에서는 prototype을 사용하여 class을 공유역역으로 사용 -->
+
+    <!-- <script>
+            function Person(){}
+                Person.prototype.eyes=2;
+                Person.prototype.nose=1;
+                var p1=new Person();
+                var p2=new Person();
+                console.log (p1.eyes+":"+p1.nose+"<br>"); // 2:1
+                console.log(p2.eyes+":"+p2.nose+"<br>"); // 2:1
+                p1.eyes=1;
+                console.log(p1.eyes+":"+p1.nose+"<br>"); // 1:1
+                console.log(p2.eyes+":"+p2.nose+"<br>"); // 2:1
+                console.log(Person.prototype.eyes+"<br>"); // 2
+                console.log(p1.eyes===Person.prototype.eyes);// false
+
+    </script> -->
+    <!-- <script>
+        var p1= {
+            eyes:3,
+            nose: 41
+        }
+        console.log(p1.__proto__ === Object.prototype); // true
+        console.log(Object === p1.constructor); // true
+    </script> -->
+    <script>
+        const person = {
+            firstName: "John",
+            lastName : "Doe",
+            id       : 5566,
+            // 함수더라도, 항상 변수에 할당해야 함!
+            fullName : function() {
+                console.log(this);
+                return this.firstName + " " + this.lastName;
+            }
+        };
+        console.log(person.fullName());
+    </script>
+</body>
+</html>
