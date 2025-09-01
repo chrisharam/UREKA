@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<h1>JavaScript Functions</h1>
+<h2>setTimeout() with a Callback</h2>
+
+<p>Wait 3 seconds (3000 miliseconds) for this page to change</p>
+
+<h1 id="demo"></h1>
+
+<script>
+    // this의 활용법 두가지.
+    // 객체를 가르킬 때, 함수가 바로 실행되지 않도록 한 번 더 감싸는 것으로 활용됨.
+
+    // 1.
+    // setTimeout(() => {
+    //    console.log(this) ;
+    //    myFunction("I love You!!");
+    // }, 3000);
+
+
+    // 2.
+    setTimeout(function() {
+       console.log(this) ;
+       myFunction("I love You!!");
+    }, 3000);
+
+    function myFunction(value){
+        document.getElementById("demo").innerHTML = value;
+    }
+
+
+</script>
+
+
+
+</body>
+</html>

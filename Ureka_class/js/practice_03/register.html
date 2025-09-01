@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript Functions</h1>
+<h2>Function Sequence</h2>
+<p>JavaScript functions are executed in the sequence they are called.</p>
+
+<p>The result of the calculation is:</p>
+<p id="demo"></p>
+
+<script>
+function myDisplayer(some) { //6. 인자 받아서 수행
+  document.getElementById("demo").innerHTML = some;
+} // 7. 종료
+
+function myCalculator(num1, num2) {
+  let sum = num1 + num2;    // 2. local 변수이기 때문에, 해당 result에 저장
+  return sum;   // 3. '}'를 만나기 때문에 해당 레이어를 종료 + sum이라는 값을 register에 저장
+}
+
+let result = myCalculator(5, 5);    // 1. 해당 레이어에 피연산자를 할당 & 4. register의 값을 받음
+myDisplayer(result); // 5. 새로운 레이어에 myDisplayer가 생성
+</script>
+
+</body>
+</html>

@@ -395,4 +395,116 @@ nav button {
   .socials{
     justify-content: center;
   }
+  .modal-content {
+    width: 90%;
+    margin: 30% auto;
+    padding: 20px;
+  }
+  .modal-buttons {
+    flex-direction: column; /* 모바일에서는 세로 배치 */
+  }
+}
+
+/* ======================
+   모달 로그인 스타일 추가
+   ====================== */
+
+.modal {
+  display: none; /* 초기에는 숨김 */
+  position: fixed;
+  z-index: 1000; /*priority*/
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+  background-color: #222;
+  margin: 10% auto;
+  padding: 30px;
+  border: 1px solid #888;
+  width: 400px;
+  border-radius: 10px;
+  position: relative;
+  color: #fff;
+}
+
+.modal-content h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.modal-content label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+}
+
+/* 버튼 그룹: 로그인 + 회원가입 */
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px; /* 버튼 사이 간격 */
+  margin-top: 20px;
+}
+
+/* 로그인 버튼 */
+#submitLogin {
+  flex: 1;
+  background-color: #db0001;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#submitLogin:hover {
+  background-color: #ff1a1a;
+}
+
+/* 회원가입 버튼 */
+#signUpInModal {
+  flex: 1;
+  background-color: #555;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#signUpInModal:hover {
+  background-color: #777;
+}
+
+.modal .close {
+  color: #aaa;
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal .close:hover {
+  color: #fff;
 }

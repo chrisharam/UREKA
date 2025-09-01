@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id ="demo"></p>
+
+    <script>
+        class Car{
+            constructor(name, year) {
+                this.name = name;
+                this.year = year;
+            }
+            age(){
+             const date = new Date();
+             return date.getFullYear() - this.year;
+            }
+        }
+
+        const myCar1 = new Car("정하람",2000);
+        const myCar2= new Car();
+        console.log(myCar1.age());
+
+
+    </script>
+</body>
+</html>

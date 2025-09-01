@@ -81,11 +81,13 @@
     function 객체:
         일반 함수처럼 호출 가능 + 생성자로도 사용 가능
         prototype 메서드는 수동 추가
+        constructor(생성자) 없음.
     class 객체:
         함수와 본질적으로 같지만, '생성자 전용 문법' = 새로운 객체를 파생
         new 없이 호출 불가
         prototype 메서드 자동 정의
         strict mode 강제
+        constructor(생성자) 있음 = new 키워드 사용
 
     EX_function)
         function Person(name) {

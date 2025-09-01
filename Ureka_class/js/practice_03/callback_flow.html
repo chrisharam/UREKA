@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript Functions</h1>
+<h2>Callback Functions</h2>
+
+<p>The result of the calculation is:</p>
+<p id="demo"></p>
+
+<script>
+function myDisplayer(something) {
+  document.getElementById("demo").innerHTML = something;
+}
+
+function myCalculator(num1, num2, myCallback) {
+  let sum = num1 + num2;
+  myCallback(sum);
+}
+
+myCalculator(5, 5, myDisplayer); // 1. myCalculator라는 레이어가 생성
+                                // 해당 레이어에, num1 num2 sum 그리고 myCallback의 코드가 저장됨.
+
+// myCallback이라는 파라미터가 this와의 차이점...?
+
+</script>
+<!-- 
+    항상, 객체 생성 -> 호출을 실행
+    (1) 21라인의 ';'까지 읽고 -> 5,5,mydisplayer의 코드를 전달 및 16라인 실행
+    (2) myCalculator 레이어에, num1, num2, sum 변수 & mydisplayer 주솟값 존재.
+    (3) 16라인의, num1, num2, sum 변수와  myCallback
+    (4) 
+    (5) 
+    (6) 
+    (7) 
+    (8) 
+    (9) 
+    (10) 
+-->
+</body>
+</html>

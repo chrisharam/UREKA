@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- event listener -->
+<body>
+        <!-- // 이벤트이름이 아님!!! -->
+    <!--    // 리스너 지정     //값 지정             -->
+    <!-- <button onclick="greet(event,'하람',25)">click</button>  html과 script가 섞여있는 형태 = 비선호 -->
+    <br>
+    <button id ="myButton">click </button>
+    <script> // 호출 x
+        function greet(name, age){
+            let value =  `hello  ${name} ! You are ${age} years old.`;
+            console.log(value);
+        } 
+        const myBtn = document.getElementById("myButton");
+        // myBtn.addEventListener("clic1k",greet('하람',25)); //callback함수
+        // 이벤트 이름, 실행동작
+        // 이벤트를 지금 실행하는 것이 아니라, 이벤트가 실행되면 시작되도록
+        // 메서드가 지금 호출 x = 콜백함수 = 실행되도록 예약 걸어둬야 함
+        // ! 현재는 새로고침하면 바로 실행됨 !
+        
+        myBtn.addEventListener("click",()=>{
+            greet('하람',25);
+        })
+        // 화살표 함수의 차이 : 새로고침해도, 기존의 것이 유지 X
+        // 장점 : (event) 형식으로 전달됨.
+
+        // function greet(event, name, age){
+        //     let value =  `hello  ${name} ! You are ${age} years old.`;
+        //     console.log(value);
+        // } 
+        // myBtn.addEventListener("click",(event)=>{
+        //     greet('하람',25);
+        // })                               //callback함수 = (event)=>
+
+
+    </script>
+
+</body>
+</html>
