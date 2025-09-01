@@ -1,0 +1,218 @@
+==============================
+ JavaScript TIL 정리
+==============================
+
+1. Function (함수)
+------------------------------
+- 사용 이유: 재사용성, 코드 모듈화
+- 선언 방식:
+  (1) 일반 함수 선언:
+      let myFunction = function(a, b) { return a * b };
+
+      ⚠️ this 모호성 존재
+      (호출 객체에 따라 this가 달라짐)
+
+  (2) 화살표 함수:
+      myFunction = (a, b) => a * b;
+
+      ✅ this 바인딩이 선언된 스코프를 따름 (모호성 해결)
+
+- 문자열 결합
+  (1) '+' 연산자:
+      function greet(name, age) {
+          return "hello " + name + "! You are " + age + " years old.";
+      }
+
+  (2) 템플릿 리터럴(`백틱`):
+      function greet(name, age) {
+          return `hello ${name}! You are ${age} years old.`;
+      }
+        : 변수는 ${}로 감쌈 & '+'연산자 필요x
+
+- 메모리 구조
+  * Heap: 객체, 함수 등 참조형 데이터 저장
+  * Stack: 함수 호출 시 실행 컨텍스트(매개변수, 지역 변수, return 주소) 저장
+  * 함수 호출 흐름:
+    Stack에 push → 실행 → return 후 pop
+
+- 함수 안에 함수를 인자로 넣기 가능 (콜백)
+
+------------------------------
+2. Event (이벤트)
+------------------------------
+- Event: 사용자 동작(클릭, 입력 등)에 의해 발생하는 것
+- Event Handler: 이벤트 발생 시 실행되는 함수
+
+(1) Inline 방식 (비추천)
+    <button onclick="document.getElementById('demo').innerHTML = Date()">
+        The time is?
+    </button>
+    → HTML과 JS 코드가 섞여 유지보수 불리
+    → event = 'click'
+    → eventListener = 'onclick'
+    → hander = document.getElementById('demo').innerHTML = Date()">The time is?
+
+(2) addEventListener 방식 (추천)
+    document.getElementById("myBtn").addEventListener("click", () => {
+        document.getElementById("demo").innerHTML = Date();
+    });
+
+------------------------------
+3. Callback Function (콜백 함수)
+------------------------------
+- 함수의 인자로 전달되는 함수
+- 특징: "바로 실행하지 않고, 필요할 때 실행"
+- 예시:
+    function processUserInput(callback) {
+        let name = "Haram";
+        callback(name);
+    }
+
+    processUserInput((name) => {
+        console.log("Hello " + name);
+    });
+
+- 활용: 이벤트 처리, 비동기 함수(setTimeout)
+- NOTE
+    : 함수의 인자값으로 전달되는 함수(인자로서의 함수) // 연이은 함수의 동작 시 필요.
+    : 바로 호출하지 않는 것이 핵심
+    : parameter에 작성할 때, ()를 빼고 작성해야 함.
+
+------------------------------
+4. Array (배열)
+------------------------------
+- 선언 방법:
+  (1) const points = new Array();
+      → 빈 배열 생성 (동적 할당)
+  (2) const points = [];
+      → 리터럴 방식
+  (3) const points = new Array(40, 100, 1, 5, 25, 10);
+  (4) const points = [40, 100, 1, 5, 25, 10];
+
+- 배열과 객체 혼합 (Dictionary처럼 사용 가능)
+  const myObj = {
+      name: "John",
+      age: 30,
+      cars: [
+          { name: "Ford", models: ["Fiesta", "Focus", "Mustang"] },
+          { name: "BMW", models: ["320", "X3", "X5"] },
+          { name: "Fiat", models: ["500", "Panda"] }
+      ]
+  };
+
+==============================
+5. this의 활용
+==============================
+📌 핵심
+(1) method VS Function
+    method : "객체.메서드()"처럼 호출 → 호출한 객체가 this
+    function : 그냥 "함수()"처럼 호출 → 기본적으로 window(globalThis)가 this
+
+(2) 결국 function을 해당 객체의 메서드처럼 동작하게 만드는 것이 핵심이다!
+    - 방법 1 (고전): 객체의 주솟값을 참조(self=this)하거나 bind(this)를 사용
+    - 방법 2 (modern): 화살표 함수(=>)를 사용해 상위 스코프의 this를 유지
+
+(3) 개념
+    : 메서드 내부에서의 this는 호출한 객체를 참조하지만,
+    : 콜백이나 화살표 함수에 따라 this가 달라질 수 있음.
+    : 현대 JS에서는 5번(화살표 함수 콜백) 방식이 가장 권장됨.
+
+------------------------------
+(1) 기본 메서드 호출
+------------------------------
+let obj = {
+  myVar: 'foo',
+  myMeth: function jes() {
+    console.log(this.myVar);
+  }
+}
+obj.myMeth(); // foo
+
+- obj의 '메서드'로 호출되었기 때문에 this === obj
+
+------------------------------
+(2) setTimeout + 일반 함수
+------------------------------
+let obj = {
+  myVar: 'foo',
+  myMeth: function jes() {
+    console.log(this.myVar); // obj
+    setTimeout(function hkd() {
+      console.log(this.myVar); // window
+    }, 1000);
+  }
+}
+obj.myMeth(); // foo  undefined
+
+- setTimeout 내부는 별도의 일반 함수 → this === window
+- 원래 setTimeout은 window의 함수. 이를 객체의 함수로 참조하지 않음.
+
+------------------------------
+(3) self 변수 사용
+------------------------------
+let obj = {
+  myVar: 'foo',
+  myMeth: function jes() {
+    let self = this;
+    console.log(this.myVar); // obj
+    setTimeout(function hkd() {
+      console.log(self.myVar); // self는 obj
+    }, 1000);
+  }
+}
+obj.myMeth(); // foo  foo
+
+- this를 self 변수에 저장해 해결 (고전적인 방법)
+
+------------------------------
+(4) bind 사용
+------------------------------
+let obj = {
+  myVar: 'foo',
+  myMeth: function jes() {
+    console.log(this.myVar); // obj
+    setTimeout(function hkd() {
+      console.log(this.myVar);
+    }.bind(this), 1000);
+  }
+}
+obj.myMeth(); // foo  foo
+
+- bind(this)로 콜백의 this를 obj에 고정(강제)
+
+------------------------------
+(5) 화살표 함수 사용 ✅ (권장)
+------------------------------
+let obj = {
+  myVar: 'foo',
+  myMeth: function jes() {
+    console.log(this.myVar); // obj
+    setTimeout(() => {
+      console.log(this.myVar); // 상위 스코프 this(obj) 유지
+    }, 1000);
+  }
+}
+obj.myMeth(); // foo  foo
+
+- 화살표 함수는 this를 새로 바인딩하지 않고 상위 스코프의 this(obj)를 사용
+
+------------------------------
+(6) 메서드를 화살표 함수로 정의 ❌
+------------------------------
+let obj = {
+  myVar: 'foo',
+  myMeth: () => {
+    console.log(this.myVar); // window
+    setTimeout(() => {
+      console.log(this.myVar); // window
+    }, 1000);
+  }
+}
+obj.myMeth(); // undefined  undefined
+
+- 메서드를 화살표 함수로 선언하면 this는 obj가 아니라 최상위의 obj인 window
+- 따라서 undefined 출력
+
+==============================
+✅ 결론: 메서드에서는 일반 함수 + 콜백은 화살표 함수(5번 방식) 사용 권장
+==============================
